@@ -44,7 +44,7 @@ def generator(extract_path, project_slug, project_title, project_des, file_exten
                     response_content, file.get("name"), project_slug, file.get("path")
                 )
         except Exception as e:
-            print(f"itrate error : {e}")
+            print(f"custom itrate error : {e}")
 
         # set project fields :
         project = ProjectModel.objects.filter(slug=project_slug).first()
@@ -131,15 +131,15 @@ def sender(filename: str, filePath: str, code, projectTitle: str, projectDes: st
             ```
     """
 
-    url = "https://api.aimlapi.com/v1"
+    url = "https://agentrouter.org/v1"
 
     # Insert your AIML API key in the quotation marks instead of <YOUR_AIMLAPI_KEY>:
-    key = "70cb887af6514fd4806639425b92b04d"
+    key = "sk-JJQ30ATZhD5x2ARQdnRgbQ86QwbVFb44xt78F2PF2XuZpVjg"
 
     api = OpenAI(api_key=key, base_url=url)
 
     completion = api.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-5",
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": USER_PROMPT},
