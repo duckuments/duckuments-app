@@ -131,15 +131,15 @@ def sender(filename: str, filePath: str, code, projectTitle: str, projectDes: st
             ```
     """
 
-    url = "https://agentrouter.org/v1"
+    url = "http://localhost:11434/v1"
 
     # Insert your AIML API key in the quotation marks instead of <YOUR_AIMLAPI_KEY>:
-    key = "sk-JJQ30ATZhD5x2ARQdnRgbQ86QwbVFb44xt78F2PF2XuZpVjg"
+    key = "ollama"
 
     api = OpenAI(api_key=key, base_url=url)
 
     completion = api.chat.completions.create(
-        model="gpt-5",
+        model="phi3:mini",
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": USER_PROMPT},
